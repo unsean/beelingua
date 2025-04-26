@@ -1,0 +1,51 @@
+// Code ini cuman ngespam pilihan ganda yang dipilih (1-30).
+// Jadi nanti diubah default_answer menjadi A/B/C/D/E jadi ada 5x pengerjaan
+
+const DEFAULT_ANSWER = 'A'; // Set to A / B / c / D / E
+const TOTAL_QUESTIONS = 30;
+
+function getButtons() {
+    return Array.from(document.querySelectorAll('button'));
+}
+
+async function autoAnswerAndSave() {
+    let currentQuestion = 1;
+    
+    while (currentQuestion <= TOTAL_QUESTIONS) {
+        const buttons = getButtons();
+        
+        const answerButton = buttons.find(b => 
+            b.textContent.trim().startsWith(DEFAULT_ANSWER)
+        );
+        
+        if (answerButton) {
+            answerButton.click();
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        const isLastQuestion = currentQuestion === TOTAL_QUESTIONS;
+        const saveButton = buttons.find(b => 
+            b.textContent.trim() === (isLastQuestion ? "Save" : "Save & Next")
+        );
+
+        if (saveButton) {
+            saveButton.click();
+            await new Promise(resolve => setTimeout(resolve, 180));
+            
+            if (isLastQuestion) {
+                const yesButton = getButtons().find(b => 
+                    b.textContent.trim() === "Yes"
+                );
+                if (yesButton) yesButton.click();
+                break;
+            }
+            
+            currentQuestion++;
+            await new Promise(resolve => setTimeout(resolve, 200)); // Wait for next question
+        } else {
+            await new Promise(resolve => setTimeout(resolve, 900));
+        }
+    }
+}
+
+autoAnswerAndSave();
