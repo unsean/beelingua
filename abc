@@ -1,0 +1,64 @@
+function getButtons() {
+    return Array.from(document.querySelectorAll('button'));
+}
+
+function isAnswerCorrect() {
+    return document.querySelector('.correct-indicator') !== null;
+}
+
+async function bruteforce() {
+    while (true) {
+        let answeredCorrectly = false;
+        const buttons = getButtons();
+        
+        for (const option of ['A', 'B', 'C', 'D', 'E']) {
+            const optionButton = buttons.find(b => 
+                b.textContent.trim().startsWith(option)
+            );
+            
+            if (!optionButton) continue;
+            
+            optionButton.click();
+            
+            const checkButton = buttons.find(b => 
+                b.textContent.trim() === "Check"
+            );
+            if (checkButton) checkButton.click();
+            
+            await new Promise(resolve => setTimeout(resolve, 250)); // Set time disini
+            
+            if (isAnswerCorrect()) {
+                answeredCorrectly = true;
+                break;
+            }
+        }
+
+        const nextButton = getButtons().find(b => 
+            b.textContent.trim() === "Next"
+        );
+        
+        if (nextButton) {
+            nextButton.click();
+            await new Promise(resolve => setTimeout(resolve, 250)); 
+            continue;
+        }
+
+        const submitButton = getButtons().find(b => 
+            b.textContent.trim() === "Submit"
+        );
+        
+        if (submitButton) {
+            submitButton.click();
+            const yesButton = getButtons().find(b => 
+                b.textContent.trim() === "Yes"
+            );
+            if (yesButton) yesButton.click();
+            break;
+        }
+
+        if (!answeredCorrectly) break;
+    }
+}
+
+bruteforce();
+
