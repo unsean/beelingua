@@ -1,6 +1,10 @@
 // Code ini cuman ngespam pilihan ganda yang dipilih (1-30).
 // Jadi nanti diubah default_answer menjadi A/B/C/D/E sesuai kebutuhan jadi ada 5x pengerjaan
 
+// Misal pada percobaan ke 1, default_answer = A, 
+// Kemudian setelah submit dan kembali ke page yang menunjukkan nilai,
+// Paste lagi codenya ke console dan ubah default_answer = 'B', lalu enter dan kerjakan lagi soalnya
+
 const DEFAULT_ANSWER = 'A'; // Set to A / B / c / D / E
 const TOTAL_QUESTIONS = 30;
 
