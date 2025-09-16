@@ -1,9 +1,6 @@
-// Code ini cuman ngespam pilihan ganda yang dipilih (1-30).
+// Code ini cuman ngespam pilihan ganda yang dipilih (1-30) berdasar dari DEFAULT_ANSWER.
 // Jadi nanti diubah default_answer menjadi A/B/C/D/E sesuai kebutuhan jadi ada 5x pengerjaan
-
-// Misal pada percobaan ke 1, default_answer = A, 
-// Kemudian setelah submit dan kembali ke page yang menunjukkan nilai,
-// Paste lagi codenya ke console dan ubah default_answer = 'B', lalu enter dan kerjakan lagi soalnya
+// Sisa penjelasan berada pada readme.md
 
 const DEFAULT_ANSWER = 'A'; // Set to A / B / c / D / E
 const TOTAL_QUESTIONS = 30;
@@ -24,7 +21,7 @@ async function autoAnswerAndSave() {
         
         if (answerButton) {
             answerButton.click();
-            await new Promise(resolve => setTimeout(resolve, 100));
+            await new Promise(resolve => setTimeout(resolve, 400));
         }
 
         const isLastQuestion = currentQuestion === TOTAL_QUESTIONS;
@@ -34,7 +31,7 @@ async function autoAnswerAndSave() {
 
         if (saveButton) {
             saveButton.click();
-            await new Promise(resolve => setTimeout(resolve, 180));
+            await new Promise(resolve => setTimeout(resolve, 400));
             
             if (isLastQuestion) {
                 const yesButton = getButtons().find(b => 
@@ -45,9 +42,9 @@ async function autoAnswerAndSave() {
             }
             
             currentQuestion++;
-            await new Promise(resolve => setTimeout(resolve, 200)); // Wait for next question
+            await new Promise(resolve => setTimeout(resolve, 400)); 
         } else {
-            await new Promise(resolve => setTimeout(resolve, 900));
+            await new Promise(resolve => setTimeout(resolve, 800));
         }
     }
 }
