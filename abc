@@ -1,3 +1,5 @@
+// Untuk instruksi pengerjaan, bisa dilihat pada readme.md
+
 function getButtons() {
     return Array.from(document.querySelectorAll('button'));
 }
