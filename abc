@@ -27,7 +27,7 @@ async function bruteforce() {
             );
             if (checkButton) checkButton.click();
             
-            await new Promise(resolve => setTimeout(resolve, 250)); // Set time disini
+            await new Promise(resolve => setTimeout(resolve, 400));
             
             if (isAnswerCorrect()) {
                 answeredCorrectly = true;
