@@ -38,4 +38,6 @@ terlebih dahulu, baru kembali ke no 1 dan paste codenya.
 Enjoy the code and semangat speedrunnya.
 Speedrun percourse biasa 1 jam.
 
-
+# Checkpoint
+Untuk checkpoint, kalian paste codenya.
+setelah selesai yang A kalian akan diarahkan page yang menunjukkan scorenya. Sebelum tekan try again, kalian set DEFAULT_ANSWER = B baru tekan Try again, dan lanjut berulang sampai habis.
